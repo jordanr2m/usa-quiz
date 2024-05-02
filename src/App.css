@@ -1,38 +1,103 @@
+body {
+  background: url("../img/background-img.jpg") no-repeat;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.App h1 {
+  max-width: 400px;
+}
+
+.Menu,
+.Quiz,
+.EndScreen {
+  width: 500px;
+  height: 500px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   color: white;
+  border-radius: 10px;
+  background-color: rgb(28, 41, 159);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* === Menu Styles === */
+.Menu input,
+button {
+  width: 300px;
+  height: 50px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Menu input::placeholder {
+  padding-left: 5px;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  color: white;
+  background-color: red;
+}
+
+.Menu label {
+  font-size: 1.25rem;
+}
+
+/* === Quiz Styles === */
+.Quiz {
+  position: relative;
+}
+
+.Quiz h1 {
+  font-size: 1.9rem;
+  margin-top: 0;
+}
+
+.Quiz p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 0 10px 10px;
+  font-size: 0.9rem;
+}
+
+button.nextQuestion,
+button.finishQuiz {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 6px 6px 0;
+  width: auto;
+  height: auto;
+  color: white;
+  font-size: 1.2rem;
+  background: transparent;
+  padding: 5px;
+}
+
+button.nextQuestion:hover,
+button.finishQuiz:hover {
+  background-color: rgb(168, 216, 254);
+  color: black;
+  transition: background 200ms ease-in;
+}
+
+/* === Finish screen styles === */
+button.restartQuiz {
+  margin-top: 45px;
 }
