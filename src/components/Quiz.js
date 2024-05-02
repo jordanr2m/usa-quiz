@@ -20,6 +20,8 @@ function Quiz() {
         if (Questions[currentQuestion].answer === optionChosen) {
             setScore(score + 1);
         }
+        // Set option to empty string for disabled property
+        chooseOption("");
         // Increment value of currentQuestion by 1
         setCurrentQuestion(currentQuestion + 1)
     }
@@ -46,10 +48,10 @@ function Quiz() {
 
             {/* See if the currentQuestion is the final question */}
             {currentQuestion === Questions.length - 1 ? (
-                <button className="finishQuiz" onClick={finishQuiz}>Finish Quiz</button>
+                <button className="finishQuiz" disabled={optionChosen.length === 0 ? true : false} onClick={finishQuiz}>Finish Quiz</button>
             ) : (
                 // Move to the next question if it isn't the last one
-                <button className="nextQuestion" onClick={nextQuestion}>Next Question</button>
+                <button className="nextQuestion" disabled={optionChosen.length === 0 ? true : false} onClick={nextQuestion}>Next Question</button>
             )}
 
             <p>Question {currentQuestion + 1} / {Questions.length}</p>

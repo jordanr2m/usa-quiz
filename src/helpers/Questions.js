@@ -8,7 +8,7 @@ export const Questions = [
         answer: "optionD"
     },
     {
-        prompt: "What was the first state?",
+        prompt: "Which was the first US state?",
         optionA: "New Hampshire",
         optionB: "Massachusetts",
         optionC: "Deleware",
