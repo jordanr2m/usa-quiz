@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Do You Know Your Stars & Stripes?</h1>
+      <h1 className='title'>Do You Know Your Stars & Stripes?</h1>
       <GameStateContext.Provider value={{gameState, setGameState, userName, setUserName, score, setScore}}>
         {gameState === 'menu' && <Menu />}
         {gameState === 'playing' && <Quiz />}
