@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { GameStateContext } from '../helpers/Contexts';
 
 function Menu() {
-    // get an instance of the context in order to have full access to these values
     const { setGameState, setUserName } = useContext(GameStateContext);
 
     return (
@@ -21,8 +20,8 @@ function Menu() {
                     }
                 }}
             />
-            {/* Change game state once they click the start button */}
-            <button onClick={() => { setGameState("playing") }}>Start Quiz</button>
+            {/* Change game state when start is pressed */}
+            <button onClick={() => setGameState("playing")}>Start Quiz</button>
         </div>
     )
 }

@@ -20,7 +20,7 @@ function Quiz() {
         if (Questions[currentQuestion].answer === optionChosen) {
             setScore(score + 1);
         }
-        // Set option to empty string for disabled property
+        // Set option to empty string for next question (so disabled property will work correctly)
         chooseOption("");
         // Increment value of currentQuestion by 1
         setCurrentQuestion(currentQuestion + 1)
@@ -40,10 +40,10 @@ function Quiz() {
             <h1>{Questions[currentQuestion].prompt}</h1>
             <div className="questions">
                 {/* Create an onClick event for each button to keep track of which option they chose */}
-                <button onClick={() => { chooseOption("optionA") }}>{Questions[currentQuestion].optionA}</button>
-                <button onClick={() => { chooseOption("optionB") }}>{Questions[currentQuestion].optionB}</button>
-                <button onClick={() => { chooseOption("optionC") }}>{Questions[currentQuestion].optionC}</button>
-                <button onClick={() => { chooseOption("optionD") }}>{Questions[currentQuestion].optionD}</button>
+                <button onClick={() => chooseOption("optionA")}>{Questions[currentQuestion].optionA}</button>
+                <button onClick={() => chooseOption("optionB")}>{Questions[currentQuestion].optionB}</button>
+                <button onClick={() => chooseOption("optionC")}>{Questions[currentQuestion].optionC}</button>
+                <button onClick={() => chooseOption("optionD")}>{Questions[currentQuestion].optionD}</button>
             </div>
 
             {/* See if the currentQuestion is the final question */}
