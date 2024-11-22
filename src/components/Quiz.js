@@ -4,8 +4,7 @@ import { useState, useContext } from "react";
 import { GameStateContext } from '../helpers/Contexts';
 
 function Quiz() {
-    const { score, setScore, setGameState } = useContext(GameStateContext);
-    // A state to represent which question we are currently on
+    const { score, setScore, setGameState, wrongAnswers, setWrongAnswers } = useContext(GameStateContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     // A state to represent whichever answer we chose
     const [optionChosen, setOptionChosen] = useState("");
@@ -19,6 +18,8 @@ function Quiz() {
         // Compare to see if the answer was correct
         if (Questions[currentQuestion].answer === optionChosen) {
             setScore(score + 1);
+        } else {
+            setWrongAnswers([...wrongAnswers, Questions[currentQuestion]]);
         }
         // Set option to empty string for next question (so disabled property will work correctly)
         chooseOption("");
@@ -30,6 +31,8 @@ function Quiz() {
         // Check to see if the answer for the last question is correct
         if (Questions[currentQuestion].answer === optionChosen) {
             setScore(score + 1);
+        } else {
+            setWrongAnswers([...wrongAnswers, Questions[currentQuestion]]);
         }
         // change gameState to finished
         setGameState("finished")
@@ -40,18 +43,37 @@ function Quiz() {
             <h1>{Questions[currentQuestion].prompt}</h1>
             <div className="questions">
                 {/* Create an onClick event for each button to keep track of which option they chose */}
-                <button onClick={() => chooseOption("optionA")}>{Questions[currentQuestion].optionA}</button>
-                <button onClick={() => chooseOption("optionB")}>{Questions[currentQuestion].optionB}</button>
-                <button onClick={() => chooseOption("optionC")}>{Questions[currentQuestion].optionC}</button>
-                <button onClick={() => chooseOption("optionD")}>{Questions[currentQuestion].optionD}</button>
+                <button onClick={() => chooseOption("optionA")}>
+                    {Questions[currentQuestion].optionA}
+                </button>
+                <button onClick={() => chooseOption("optionB")}>
+                    {Questions[currentQuestion].optionB}
+                </button>
+                <button onClick={() => chooseOption("optionC")}>
+                    {Questions[currentQuestion].optionC}
+                </button>
+                <button onClick={() => chooseOption("optionD")}>
+                    {Questions[currentQuestion].optionD}
+                </button>
             </div>
 
             {/* See if the currentQuestion is the final question */}
             {currentQuestion === Questions.length - 1 ? (
-                <button className="finishQuiz" disabled={optionChosen.length === 0 ? true : false} onClick={finishQuiz}>Finish Quiz</button>
+                <button
+                    className="finishQuiz"
+                    disabled={optionChosen.length === 0 ? true : false} onClick={finishQuiz}
+                >
+                    Finish Quiz
+                </button>
             ) : (
                 // Move to the next question if it isn't the last one
-                <button className="nextQuestion" disabled={optionChosen.length === 0 ? true : false} onClick={nextQuestion}>Next Question</button>
+                <button
+                    className="nextQuestion"
+                    disabled={optionChosen.length === 0 ? true : false}
+                    onClick={nextQuestion}
+                >
+                    Next Question
+                </button>
             )}
 
             <p>Question {currentQuestion + 1} / {Questions.length}</p>
